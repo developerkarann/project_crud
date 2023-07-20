@@ -1,0 +1,35 @@
+.container{
+    width: 80vw !important;
+    height: 85vh;
+    border: 1px solid #b041ff;
+    padding: 0 !important;
+    border-radius: 5px;
+}
+
+.search_box {
+    background: linear-gradient(to right, #b041ff, #6698ff);;
+    display: flex;
+    justify-content: center;
+}
+.search{
+  width: 50vw;
+}
+.content{
+    height: 75vh;
+    overflow-y: hidden;
+    overflow: auto;
+}
+.content::-webkit-scrollbar{
+    width: 0px;
+}
+/* Middle Components Styling */
+.btns {
+  display: flex;
+  justify-content: center;
+}
+.btns i{
+  font-size: 25px;
+}
+.delete_btn{
+  color: red;
+}
