@@ -1,35 +1,51 @@
-.container{
-    width: 80vw !important;
-    height: 85vh;
-    border: 1px solid #b041ff;
-    padding: 0 !important;
-    border-radius: 5px;
+.container {
+  width: 80vw !important;
+  height: 85vh;
+  border: 1px solid #b041ff;
+  padding: 0 !important;
+  border-radius: 5px;
 }
 
 .search_box {
-    background: linear-gradient(to right, #b041ff, #6698ff);;
-    display: flex;
-    justify-content: center;
+  padding: 0 30PX;
+  background: linear-gradient(to right, #b041ff, #6698ff);
+  display: flex;
+  justify-content: space-between;
 }
-.search{
+
+.search {
   width: 50vw;
 }
-.content{
-    height: 75vh;
-    overflow-y: hidden;
-    overflow: auto;
+
+.content {
+  height: 75vh;
+  overflow-y: hidden;
+  overflow: auto;
 }
-.content::-webkit-scrollbar{
-    width: 0px;
+
+.content::-webkit-scrollbar {
+  width: 0px;
 }
+
 /* Middle Components Styling */
-.btns {
+.btns i {
+  font-size: 25px;
+}
+
+.delete_btn {
+  color: red;
+}
+
+/* Add Data Section Styling */
+
+.form-content {
   display: flex;
   justify-content: center;
 }
-.btns i{
-  font-size: 25px;
-}
-.delete_btn{
-  color: red;
+
+.form {
+  width: 50vw !important;
+  border: 2px solid gainsboro;
+  padding: 20px;
+  border-radius: 20px;
 }
