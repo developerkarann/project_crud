@@ -101,7 +101,7 @@ export default function EditForm() {
                 </div>
                 <div className="form-content">
                     {/* Add Data Form  */}
-                    <div className="form my-4">
+                    <div className="form my-4 shadow p-3 mb-5 bg-white ">
                         <div className="mb-3">
                             <label for="name" className="form-label">Name</label>
                             <input type="text" value={inputValue.name} onChange={setData} className="form-control" name='name' id="name" placeholder="Enter name" />
@@ -125,7 +125,7 @@ export default function EditForm() {
                             </select>
                         </div>
                         <div className="modal-footer justify-content-center">
-                            <Link to='/' className='w-25 mx-3'>  <button type="button" className="btn btn-secondary w-100" >Close</button> </Link>
+                            <Link to='/home' className='w-25 mx-3'>  <button type="button" className="btn btn-secondary w-100" >Close</button> </Link>
                             <button type="button" className="btn btn-primary w-25 " onClick={handleUpdate}>Edit Data </button>
                         </div>
                     </div>

@@ -9,14 +9,21 @@ import './home.css'
 export default function MiddleComponent() {
 
     const [userData, setUserData] = useState([]);
+    const [search, setSearch] = useState('');
+
 
     // Get Data Functionality
     const getData = async () => {
+        let jwtcookie = await window.cookieStore.get('loginToken');
+        // console.log(jwtcookie)
+        jwtcookie = jwtcookie?.value
         const resposne = await fetch('http://localhost:8080/api/getusers', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                "Authorization": 'bearer ' + jwtcookie,
             },
+            // credentials: "include"
         }
         );
         const data = await resposne.json();
@@ -58,16 +65,18 @@ export default function MiddleComponent() {
         }
     }
 
-    // Search functionality
-
 
     return (
         <>
             <div className=" header search_box py-2">
                 <Link to='/add'> <div className="add_btn btn btn-primary"> Add Data  </div></Link>
                 <form className="d-flex search" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
                 </form>
+
+               
             </div>
             <table className="table" >
                 <thead>
@@ -82,10 +91,12 @@ export default function MiddleComponent() {
                 </thead>
                 <tbody>
                     {
-                        userData?.data?.map((element, index) => {
+                        userData?.data?.filter((item) => {
+                            return search.toLowerCase() === '' ? item : item.name.toLowerCase().includes(search) || item.position.toLowerCase().includes(search)
+                        }).map((element, index) => {
                             return (
                                 <>
-                                    <tr>
+                                    <tr key={index}>
                                         <th scope="row"> {index + 1}</th>
                                         <td>{element.name}</td>
                                         <td>{element.email}</td>

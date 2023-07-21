@@ -1,3 +1,7 @@
+.navbar{
+  background: linear-gradient(to right,#6698ff,  #b041ff) !important;
+  color: white;
+}
 .container {
   width: 80vw !important;
   height: 85vh;
@@ -13,12 +17,8 @@
   justify-content: space-between;
 }
 
-.search {
-  width: 50vw;
-}
-
 .content {
-  height: 75vh;
+  height: 83vh;
   overflow-y: hidden;
   overflow: auto;
 }
@@ -47,5 +47,5 @@
   width: 50vw !important;
   border: 2px solid gainsboro;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
 }

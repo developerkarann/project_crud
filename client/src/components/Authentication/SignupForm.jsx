@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
-import './home.css'
-import { Link } from 'react-router-dom';
+import '../Home/home.css'
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function AddForm() {
+export default function SignupForm() {
 
+    const Navigate = useNavigate()
 
     const [inputValue, setInputValue] = useState({
         name: '',
         email: '',
         number: '',
-        position: '',
+        password: '',
     });
+
 
     const setData = (e) => {
         // console.log(e.target.value)
@@ -30,9 +32,9 @@ export default function AddForm() {
 
         toast('Please wait...', { toastId: 'fetchResponse' });
 
-        const { name, email, number, position } = inputValue;
+        const { name, email, number, password } = inputValue;
 
-        const resposne = await fetch('http://localhost:8080/api/createuser', {
+        const resposne = await fetch('http://localhost:8080/api/createaccount', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +43,7 @@ export default function AddForm() {
                 name,
                 email,
                 number,
-                position,
+                password,
             }),
         }
         );
@@ -56,6 +58,7 @@ export default function AddForm() {
             });
             console.log('Getting some errors while sending data to backend')
         } else {
+            Navigate('/')
             toast.update('fetchResponse', {
                 render: data.message,
                 type: 'success',
@@ -68,7 +71,7 @@ export default function AddForm() {
                 name: '',
                 email: '',
                 number: '',
-                postion: '',
+                password: '',
             });
             console.log('Success')
         }
@@ -78,11 +81,10 @@ export default function AddForm() {
         <>
             <div className="container my-2">
                 <div className=" header search_box py-2">
-                    <h4 className='text-white'>Add Data</h4>
+                    <h4 className='text-white'>Create Your Account</h4>
                 </div>
                 <div className="form-content">
-                    {/* Add Data Form  */}
-                    <div className="form my-4 shadow p-3 mb-5 bg-white ">
+                    <div className="form my-3 shadow p-3 mb-5 bg-white " >
                         <div className="mb-3">
                             <label for="name" className="form-label">Name</label>
                             <input type="text" value={inputValue.name} onChange={setData} className="form-control" name='name' id="name" placeholder="Enter name" />
@@ -93,21 +95,16 @@ export default function AddForm() {
                         </div>
                         <div className="mb-3">
                             <label for="number" className="form-label">Number</label>
-                            <input type="text" value={inputValue.number} onChange={setData} className="form-control" name='number' id="number" placeholder="88xxxxxxxx" />
+                            <input type="text" value={inputValue.number} onChange={setData} className="form-control" name='number' id="number" placeholder="enter number" />
                         </div>
                         <div className="mb-3">
-                            <label for="position" className="form-label">Position</label>
-                            <select name="position" id="position" onClick={setData} className="form-control" onChange={() => { }} >
-                                <option value="Frontend Developer">Front-end Developer</option>
-                                <option value="Backend Developer">Back-end Developer</option>
-                                <option value="Mern Developer">Mern Stack Developer</option>
-                                <option value="Python Developer">Python Developer</option>
-                            </select>
+                            <label for="password" className="form-label">Password</label>
+                            <input type="text" value={inputValue.password} onChange={setData} className="form-control" name='password' id="password" placeholder="enter password" />
                         </div>
                         <div className="modal-footer justify-content-center">
-                            <Link to='/home' className='w-25 mx-3'>  <button type="button" className="btn btn-secondary w-100" >Close</button> </Link>
-                            <button type="button" className="btn btn-primary w-25 " onClick={handleSubmit}>Add </button>
+                            <button type="button" className="btn btn-primary w-25" onClick={handleSubmit}>Sign Up</button>
                         </div>
+                        <p className='text-center my-1'>Already have an account? <Link to='/'>Login</Link></p>
                     </div>
 
 

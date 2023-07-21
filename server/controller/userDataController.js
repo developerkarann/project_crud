@@ -32,7 +32,7 @@ const addDataController = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             status: 'error',
-            message: 'Error While calling signup Api' + error,
+            message: 'Error While adding data ' + error,
         });
     }
 };
